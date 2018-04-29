@@ -5,20 +5,11 @@
 
 module ElvmUtil where
 
-import Data.IORef
-import Data.Char
-import Data.Bits
-import System.Exit
-import Control.Monad.Catch
-
-import qualified Data.Array.MArray as MArray
-import Data.Array.MArray (MArray)
-import qualified Data.Array.IO as Array.IO
-import qualified Data.Array.ST as Array.ST
 import Data.Ix
 import Data.Char
 import Data.IORef
 import Data.STRef
+import Control.Monad.Catch
 import Control.Monad.Trans
 import Control.Monad.Trans.Identity
 import Control.Monad.Trans.State
@@ -34,19 +25,6 @@ class Monad m => MRef m r where
   readRef   :: r a -> m a
   writeRef  :: r a -> a -> m ()
   modifyRef :: r a -> (a -> a) -> m ()
-
-class (Ix i, MArray a e m)  => MArrayWithIx a i e m where
-  newArray :: (i, i) -> e -> m (a i e)
-  newArray = MArray.newArray
-
-  newArray_ :: (i, i) -> m (a i e)
-  newArray_ = MArray.newArray_
-
-  readArray :: a i e -> i -> m e
-  readArray = MArray.readArray
-
-  writeArray :: a i e -> i -> e -> m ()
-  writeArray = MArray.writeArray
 
 data InOut = InOut {input :: [Int], output :: [Int]} deriving (Show, Eq)
 
@@ -89,5 +67,3 @@ instance MRef (ST s) (STRef s) where
   writeRef = writeSTRef
   modifyRef = modifySTRef
 
-instance MArrayWithIx Array.IO.IOUArray Int Int IO
-instance MArrayWithIx (Array.ST.STArray s) Int Int (ST s)
