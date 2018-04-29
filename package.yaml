@@ -1,0 +1,42 @@
+name:                elvm-util
+version:             0.1.0-SNAPSHOT
+github:              "nwtgck/elvm-util-haskell"
+license:             BSD3
+author:              "Ryo Ota"
+maintainer:          "nwtgck@gmail.com"
+copyright:           "2018 Ryo Ota"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+# Metadata used when publishing your package
+synopsis:            Utils for autogen Haskell code by ELVM
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/nwtgck/elvm-util-haskell#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+ source-dirs: src
+ dependencies:
+ - array
+ - mtl
+ - transformers
+ - exceptions
+
+tests:
+  elvm-util-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies: []
+#    - elvm-util
