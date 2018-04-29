@@ -25,8 +25,10 @@ library:
 ...
 ```
 
-## Example repository
+## Example repositories
 
-The repository bellow uses this package.
 
-[nwtgck/knapsack-elvm-haskell: Knapsack problem solver converted from C language by ELVM.](https://github.com/nwtgck/knapsack-elvm-haskell)
+You can find usage of this package in
+
+* [nwtgck/8cc-elc-hs](https://github.com/nwtgck/8cc-elc-hs)
+* [nwtgck/knapsack-elvm-haskell](https://github.com/nwtgck/knapsack-elvm-haskell)
